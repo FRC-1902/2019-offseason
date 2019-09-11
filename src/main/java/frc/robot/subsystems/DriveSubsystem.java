@@ -11,7 +11,7 @@ public class DriveSubsystem {
 
     public DriveSubsystem() {
         left = new MotorGroup(
-                new CANSparkMax(RobotMap.LEFT_DRIVE_1, CANSparkMaxLowLevel.MotorType.kBrushless),
+                new CANSparkMax(RobotMap .LEFT_DRIVE_1, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(RobotMap.LEFT_DRIVE_2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(RobotMap.LEFT_DRIVE_3, CANSparkMaxLowLevel.MotorType.kBrushless));
 
