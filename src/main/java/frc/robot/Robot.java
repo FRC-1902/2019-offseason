@@ -70,6 +70,7 @@ public class Robot extends TimedRobot {
 
   /**
    * This function is called periodically during operator control.
+   * 
    */
   @Override
   public void teleopPeriodic() {
@@ -79,6 +80,8 @@ public class Robot extends TimedRobot {
   public void testInit() {
    max = new CANSparkMax(1,CANSparkMaxLowLevel.MotorType.kBrushless);
     max.set(0.6);
+
+    //Drive Subsytem Test
     //driveSubsystem.left.testEachWait(0.5, 1);
     //driveSubsystem.right.testEachWait(0.5, 1);
   }
