@@ -43,7 +43,7 @@ public class ArmSubsystem {
     public void armPosition(ArmPosition pos) {
         armPID.setTarget(pos.value);
         currentArmPosition = pos;
-    }
+    }//end of armPosition method
     
     private static final double GROUND_CONSTANT = 0; //can be tuned later for the correct value
 

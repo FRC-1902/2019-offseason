@@ -25,7 +25,7 @@ public class VacuumSubsystem {
         
         Vacuum_1.set(vacuumPower);
 
-    }
+    }//end of vacuum method
 
     private static final double OFF_CONSTANT = 0; //can be tuned later for the correct value
 

@@ -14,5 +14,5 @@ public class PanelSubsystem {
 
     public void intake(double speed){
         panel.set(speed);
-    }
+    }//end of intake method
 }

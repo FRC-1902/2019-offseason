@@ -26,7 +26,7 @@ public class DriveSubsystem {
     public void tankDrive(double leftPow, double rightPow) {
         left.set(leftPow);
         right.set(rightPow);
-    }
+    }//end of tankDrive method
 
 
 }

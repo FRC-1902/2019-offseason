@@ -16,5 +16,5 @@ public class BallSubsystem {
     public void intake(double speed){
         left.set(speed);
         right.set(speed);
-    }
+    }//end of intake method
 }

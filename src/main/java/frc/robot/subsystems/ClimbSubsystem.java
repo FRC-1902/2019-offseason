@@ -40,7 +40,7 @@ public class ClimbSubsystem {
     public void climbPosition (ClimbPosition pos) {
         climbPID.setTarget(pos.value);
         currentClimbPosition = pos;
-    }
+    }// end of climbPosition method
 
     private static final double GROUND_CONSTANT = 0; //can be tuned later for the correct value
 
