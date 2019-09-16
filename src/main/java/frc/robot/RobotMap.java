@@ -34,4 +34,5 @@ public class RobotMap {
 
     //variables for potentiometer
     public static final int ARM_POT_1 = 1;
+    public static final int CLIMBER_POT = 2;
 }

@@ -18,7 +18,6 @@ public class VacuumSubsystem {
 
         Vacuum_1 = new WPI_VictorSPX(RobotMap.ARM_1);
 
-
     }
 
     public void vacuum(double vacuumPower) {

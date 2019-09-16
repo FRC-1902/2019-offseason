@@ -10,7 +10,7 @@ public class BallSubsystem {
     public BallSubsystem(){
         left = new Victor(1);
         right = new Victor(2);
-//        right.setInverted(true);
+        right.setInverted(true);
     }
 
     public void intake(double speed){

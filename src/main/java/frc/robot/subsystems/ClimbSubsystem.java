@@ -31,6 +31,9 @@ public class ClimbSubsystem {
         Climb_2 = new WPI_VictorSPX(RobotMap.ARM_2);
         Climb_3 = new WPI_VictorSPX(RobotMap.ARM_3);
 
+        //Initiate potentiometer
+        climbPot = new Potentiometer(RobotMap.CLIMBER_POT);
+
         //Initiate Victor motor group
         climber = new MotorGroup(Climb_1, Climb_2, Climb_3);
 
