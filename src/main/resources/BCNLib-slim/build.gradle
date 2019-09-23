@@ -1,0 +1,21 @@
+plugins {
+    id "java"
+    id "edu.wpi.first.GradleRIO" version "2019.4.1"
+    id "maven-publish"
+}
+
+group 'explodingbacon'
+version '1.0'
+
+
+//noinspection GroovyUnusedAssignment
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile wpi.deps.wpilib()
+    compile wpi.deps.vendor.java()
+}
