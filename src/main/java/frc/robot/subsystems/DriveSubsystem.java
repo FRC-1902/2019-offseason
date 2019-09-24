@@ -14,12 +14,12 @@ public class DriveSubsystem {
     public PIDController gyroPID;
 
     public DriveSubsystem() {
-        left = new MotorGroup(
+           left = new MotorGroup(
                 new CANSparkMax(RobotMap.LEFT_DRIVE_1, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(RobotMap.LEFT_DRIVE_2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(RobotMap.LEFT_DRIVE_3, CANSparkMaxLowLevel.MotorType.kBrushless));
 
-        right = new MotorGroup(
+           right = new MotorGroup(
                 new CANSparkMax(RobotMap.RIGHT_DRIVE_1, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(RobotMap.RIGHT_DRIVE_2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(RobotMap.RIGHT_DRIVE_3, CANSparkMaxLowLevel.MotorType.kBrushless));
@@ -31,8 +31,8 @@ public class DriveSubsystem {
         gyroPID.setRotational(true);
         gyroPID.setFinishedTolerance(0.5);
 
-//        left.set(1);
-//        right.set(1);
+        left.set(1);
+        right.set(1);
     }
 
     public void tankDrive(double leftPow, double rightPow) {

@@ -9,8 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.DriveSubsystem;
-import com.revrobotics.CANSparkMaxLowLevel;
-import com.revrobotics.CANSparkMax;
+//import com.revrobotics.CANSparkMaxLowLevel;
+//import com.revrobotics.CANSparkMax;
 
 
 
@@ -23,7 +23,7 @@ import com.revrobotics.CANSparkMax;
  */
 public class Robot extends TimedRobot {
   //public static DriveSubsystem driveSubsystem;
-  CANSparkMax max;
+  //CANSparkMax max;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -31,6 +31,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
    //driveSubsystem = new DriveSubsystem();
+
+
   }
   /**
    * This function is called every robot packet, no matter the mode. Use
@@ -74,12 +76,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
+
   }
 
   @Override
   public void testInit() {
-   max = new CANSparkMax(1,CANSparkMaxLowLevel.MotorType.kBrushless);
-    max.set(0.6);
+   //max = new CANSparkMax(1,CANSparkMaxLowLevel.MotorType.kBrushless);
+    //max.set(0.6);
 
     //Drive Subsytem Test
     //driveSubsystem.left.testEachWait(0.5, 1);
@@ -90,6 +94,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    max.set(0.6);
+    //max.set(0.6);
   }
 }
