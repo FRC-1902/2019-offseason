@@ -7,11 +7,15 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.commands.BallCommand;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.BallSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
-//import com.revrobotics.CANSparkMaxLowLevel;
-//import com.revrobotics.CANSparkMax;
-
+import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.CANSparkMax;
+import frc.robot.subsystems.PanelSubsystem;
 
 
 /**
@@ -23,16 +27,23 @@ import frc.robot.subsystems.DriveSubsystem;
  */
 public class Robot extends TimedRobot {
   //public static DriveSubsystem driveSubsystem;
-  //CANSparkMax max;
+  public static Robot self;
+  public static PanelSubsystem panelSubsystem;
+  public static ArmSubsystem armSubsystem;
+  public static BallSubsystem ballSubsystem;
+  CANSparkMax max;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   @Override
   public void robotInit() {
-   //driveSubsystem = new DriveSubsystem();
+   //driveSubsystem   = new DriveSubsystem();
+    panelSubsystem  = new PanelSubsystem();
+    armSubsystem    = new ArmSubsystem();
+    ballSubsystem   = new BallSubsystem();
 
-
+    self = this;
   }
   /**
    * This function is called every robot packet, no matter the mode. Use
