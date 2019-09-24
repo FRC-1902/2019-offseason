@@ -12,7 +12,7 @@ public class PanelSubsystem {
         panel = new WPI_VictorSPX(1);
     }
 
-    public void intake(double speed){
+    public void setIntakePower(double speed){
         panel.set(speed);
     }//end of intake method
 }
