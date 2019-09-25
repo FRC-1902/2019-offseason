@@ -14,7 +14,7 @@ public class DriveCommand extends Command {
 
     if (y >= -0.1 && y <= 0.1) {
         y = 0;
-    } dd
+    }
 
     if (x >= -0.1 && x <= 0.1) {
         x = 0;
