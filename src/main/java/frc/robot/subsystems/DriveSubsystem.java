@@ -9,7 +9,7 @@ import frc.robot.RobotMap;
 
 public class DriveSubsystem {
 
-    public MotorGroup left, right;
+    public static MotorGroup left, right;
     public BNOGyro gyro;
     public PIDController gyroPID;
 
@@ -35,12 +35,12 @@ public class DriveSubsystem {
         right.set(1);
     }
 
-    public void tankDrive(double leftPow, double rightPow) {
+    public static void tankDrive(double leftPow, double rightPow) {
         left.set(leftPow);
         right.set(rightPow);
     }//end of tankDrive method
 
-    public void arcadeDrive(double x, double y){
+    public static void arcadeDrive(double x, double y){
         tankDrive(y + x,y - x);
     }
 

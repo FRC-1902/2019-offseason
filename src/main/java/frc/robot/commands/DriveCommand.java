@@ -8,7 +8,13 @@ import frc.robot.Robot;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class DriveCommand extends Command {
+    
+@Override
+    public void onInit() {
 
+    }
+@Override
+    public void onLoop() {
     double x = OI.driveController.getX2();
     double y = OI.driveController.getY();
 
@@ -18,19 +24,12 @@ public class DriveCommand extends Command {
 
     if (x >= -0.1 && x <= 0.1) {
         x = 0;
-    } 
+    }
 
-    
 
     DriveSubsystem.arcadeDrive(x, y);
 
-@Override
-    public void onInit() {
-
-    }
-@Override
-    public void onLoop() {
-
+    //System.out.println(x + y);
     }
 @Override
     public void onStop() {
@@ -38,6 +37,6 @@ public class DriveCommand extends Command {
     }
 @Override
     public boolean isFinished() {
-        return true;
+        return !Robot.self.isEnabled();
     }
 }

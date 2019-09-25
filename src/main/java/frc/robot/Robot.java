@@ -10,6 +10,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.commands.BallCommand;
+import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.BallSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
@@ -26,7 +27,7 @@ import frc.robot.subsystems.PanelSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  //public static DriveSubsystem driveSubsystem;
+  public static DriveSubsystem driveSubsystem;
   public static Robot self;
   public static PanelSubsystem panelSubsystem;
   public static ArmSubsystem armSubsystem;
@@ -38,7 +39,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-   //driveSubsystem   = new DriveSubsystem();
+    driveSubsystem   = new DriveSubsystem();
     panelSubsystem  = new PanelSubsystem();
     armSubsystem    = new ArmSubsystem();
     ballSubsystem   = new BallSubsystem();
@@ -86,6 +87,13 @@ public class Robot extends TimedRobot {
    * 
    */
   @Override
+  public void teleopInit() {
+    OI.runCommand(new DriveCommand());
+
+  }
+
+
+  @Override
   public void teleopPeriodic() {
 
 
@@ -97,8 +105,11 @@ public class Robot extends TimedRobot {
     //max.set(0.6);
 
     //Drive Subsytem Test
-    //driveSubsystem.left.testEachWait(0.5, 1);
-    //driveSubsystem.right.testEachWait(0.5, 1);
+    driveSubsystem.left.testEachWait(0.5, 1);
+    driveSubsystem.right.testEachWait(0.5, 1);
+    ballSubsystem.ball.testEachWait(0.5, 1);
+    armSubsystem.arm.testEachWait(0.5, 1);
+    panelSubsystem.setIntakePower(0.5);
   }
   /**
    * This function is called periodically during test mode.
