@@ -9,7 +9,7 @@ public class ArmCommand extends Command {
 
     ArmSubsystem armSubsystem;
 
-    boolean pidEnabled = armSubsystem.armPID.isEnabled();
+    boolean pidEnabled;
     double pow;
 
     public ArmCommand(Robot robot) {this.armSubsystem = robot.armSubsystem; }
@@ -18,6 +18,7 @@ public class ArmCommand extends Command {
     public void onInit() {
         armSubsystem.armPID.enable();
         armSubsystem.armPosition(ArmSubsystem.ArmPosition.GROUND);
+        pidEnabled = armSubsystem.armPID.isEnabled();
     }
 
     @Override

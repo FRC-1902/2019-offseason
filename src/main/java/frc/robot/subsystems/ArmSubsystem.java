@@ -30,6 +30,7 @@ public class ArmSubsystem {
         Arm1 = new WPI_VictorSPX(RobotMap.ARM_1);
         Arm2 = new WPI_VictorSPX(RobotMap.ARM_2);
         Arm3 = new WPI_VictorSPX(RobotMap.ARM_3);
+        Arm3.setInverted(true);
 
         arm = new MotorGroup(Arm1, Arm2, Arm3);
 

@@ -26,8 +26,8 @@ public class RobotMap {
     public static final int PANEL_1 = 9;
     
     //variables for ball subsystem
-    public static final int BALL_1 = 0;
-    public static final int BALL_2 = 1;
+    public static final int BALL_1 = 8;
+    public static final int BALL_2 = 9;
     
     //variables for vacuum subsystem
     public static final int VACUUM_1 = 12; //nonexistent as of now

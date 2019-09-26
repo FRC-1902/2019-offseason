@@ -5,6 +5,9 @@ import com.explodingbacon.bcnlib.framework.PIDController;
 import com.explodingbacon.bcnlib.sensors.BNOGyro;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.CANSparkMax.IdleMode;
+
+import edu.wpi.first.wpilibj.SpeedController;
 import frc.robot.RobotMap;
 
 public class DriveSubsystem {
@@ -24,6 +27,23 @@ public class DriveSubsystem {
                 new CANSparkMax(RobotMap.RIGHT_DRIVE_2, CANSparkMaxLowLevel.MotorType.kBrushless),
                 new CANSparkMax(RobotMap.RIGHT_DRIVE_3, CANSparkMaxLowLevel.MotorType.kBrushless));
 
+            for (SpeedController c : left.getMotors())
+            {
+                CANSparkMax max = (CANSparkMax) c;
+                max.clearFaults();
+                max.getEncoder();
+                max.setIdleMode(IdleMode.kBrake);
+                max.burnFlash();
+            }
+            for (SpeedController c : right.getMotors())
+            {
+                CANSparkMax max = (CANSparkMax) c;
+                max.clearFaults();
+                max.getEncoder();
+                max.setIdleMode(IdleMode.kBrake);
+                max.burnFlash();
+            }
+            right.setInverted(true);
         gyro = new BNOGyro(true);
         gyro.rezero();
 
@@ -31,8 +51,8 @@ public class DriveSubsystem {
         gyroPID.setRotational(true);
         gyroPID.setFinishedTolerance(0.5);
 
-        left.set(1);
-        right.set(1);
+        //left.set(1);
+        //right.set(1);
     }
 
     public static void tankDrive(double leftPow, double rightPow) {
@@ -41,7 +61,7 @@ public class DriveSubsystem {
     }//end of tankDrive method
 
     public static void arcadeDrive(double x, double y){
-        tankDrive(y + x,y - x);
+        tankDrive(y + x, y - x);
     }
 
     public void setLeft(double set) {

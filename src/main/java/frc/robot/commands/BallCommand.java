@@ -36,6 +36,6 @@ public class BallCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        return false;
+        return !Robot.self.isEnabled();
     }
 }
