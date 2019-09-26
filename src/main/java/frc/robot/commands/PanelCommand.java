@@ -9,7 +9,7 @@ public class PanelCommand extends Command {
 
     PanelSubsystem panelSubsystem;
 
-    PanelCommand(Robot robot) {this.panelSubsystem = robot.panelSubsystem; }
+    public PanelCommand(Robot robot) {this.panelSubsystem = robot.panelSubsystem; }
 
     @Override
     public void onInit() {

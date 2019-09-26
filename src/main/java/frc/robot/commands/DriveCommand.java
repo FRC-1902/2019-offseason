@@ -18,14 +18,10 @@ public class DriveCommand extends Command {
     double x = OI.driveController.getX2();
     double y = OI.driveController.getY();
 
-    if (y >= -0.1 && y <= 0.1) {
-        y = 0;
-    }
+    y = -y;
 
-    if (x >= -0.1 && x <= 0.1) {
-        x = 0;
-    }
-
+    x = Math.pow(Utils.deadzone(x, 0.1), 2) * Utils.sign(x);
+    y = Math.pow(Utils.deadzone(y, 0.1), 2) * Utils.sign(y);
 
     DriveSubsystem.arcadeDrive(x, y);
 

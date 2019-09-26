@@ -9,7 +9,7 @@ public class PanelSubsystem {
     public WPI_VictorSPX panel;
 
     public PanelSubsystem() {
-        panel = new WPI_VictorSPX(1);
+        panel = new WPI_VictorSPX(RobotMap.PANEL_1);
     }
 
     public void setIntakePower(double speed){

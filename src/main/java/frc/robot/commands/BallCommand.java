@@ -9,7 +9,7 @@ public class BallCommand extends Command {
 
     BallSubsystem ballSubsystem;
 
-    BallCommand(Robot robot) {this.ballSubsystem = robot.ballSubsystem; }
+    public BallCommand(Robot robot) {this.ballSubsystem = robot.ballSubsystem; }
 
     @Override
     public void onInit() {

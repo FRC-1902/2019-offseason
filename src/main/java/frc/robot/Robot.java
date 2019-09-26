@@ -9,8 +9,10 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
+import frc.robot.commands.ArmCommand;
 import frc.robot.commands.BallCommand;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.PanelCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.BallSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
@@ -71,6 +73,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+
+    OI.runCommand(new DriveCommand());
     
   }
 
@@ -88,8 +92,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopInit() {
-    OI.runCommand(new DriveCommand());
 
+    OI.runCommand(new DriveCommand());
+    OI.runCommand(new BallCommand(this));
+    OI.runCommand(new ArmCommand(this));
+    OI.runCommand(new PanelCommand(this));
   }
 
 
