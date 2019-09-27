@@ -9,6 +9,7 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ArmCommand;
 import frc.robot.commands.BallCommand;
 import frc.robot.commands.DriveCommand;
@@ -16,29 +17,15 @@ import frc.robot.commands.PanelCommand;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.BallSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
-import com.revrobotics.CANSparkMaxLowLevel;
-import com.revrobotics.CANSparkMax;
 import frc.robot.subsystems.PanelSubsystem;
 
-
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.gradle file in the
- * project.
- */
 public class Robot extends TimedRobot {
   public static DriveSubsystem driveSubsystem;
-  public static Robot self;
   public static PanelSubsystem panelSubsystem;
   public static ArmSubsystem armSubsystem;
   public static BallSubsystem ballSubsystem;
-  CANSparkMax max;
-  /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
-   */
+  public static Robot self;
+
   @Override
   public void robotInit() {
     driveSubsystem   = new DriveSubsystem();
@@ -48,81 +35,58 @@ public class Robot extends TimedRobot {
 
     self = this;
   }
-  /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
-   */
+
   @Override
   public void robotPeriodic() {
   }
 
-  /**
-   * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString line to get the auto name from the text box below the Gyro
-   *
-   * <p>You can add additional auto modes by adding additional comparisons to
-   * the switch structure below with additional strings. If using the
-   * SendableChooser make sure to add them to the chooser code above as well.
-   */
+  @Override
+  public void disabledPeriodic() {
+    System.out.println("Arm Pot: " + armSubsystem.pot.getForPID());
+  }
+
   @Override
   public void autonomousInit() {
-
+    OI.runCommand(new ArmCommand(this));
     OI.runCommand(new DriveCommand());
-    
+    OI.runCommand(new PanelCommand(this));
+    OI.runCommand(new BallCommand(this));
   }
 
-  /**
-   * This function is called periodically during autonomous.
-   */
   @Override
   public void autonomousPeriodic() {
-    
   }
 
-  /**
-   * This function is called periodically during operator control.
-   * 
-   */
   @Override
   public void teleopInit() {
-
-    OI.runCommand(new DriveCommand());
-    OI.runCommand(new BallCommand(this));
+    armSubsystem.armPID.reTune(SmartDashboard.getNumber("kP", 0),
+    SmartDashboard.getNumber("kI", 0),
+    SmartDashboard.getNumber("kD", 0));
     OI.runCommand(new ArmCommand(this));
+    OI.runCommand(new DriveCommand());
     OI.runCommand(new PanelCommand(this));
+    OI.runCommand(new BallCommand(this));
   }
 
 
   @Override
   public void teleopPeriodic() {
-
-
+      armSubsystem.armPID.logVerbose();
   }
 
   @Override
   public void testInit() {
-   //max = new CANSparkMax(1,CANSparkMaxLowLevel.MotorType.kBrushless);
-    //max.set(0.6);
-
-    //Drive Subsytem Test
+    //Drive Subsystem Test
+    /*
     driveSubsystem.left.testEachWait(0.5, 1);
     driveSubsystem.right.testEachWait(0.5, 1);
-    ballSubsystem.ball.testEachWait(0.5, 1);
-    armSubsystem.arm.testEachWait(0.5, 1);
+    ballSubsystem.ball.testEachWait(0.5, 1); 
     panelSubsystem.setIntakePower(0.5);
+    armSubsystem.arm.testEachWait(0.5, 0.5);
+    */
   }
-  /**
-   * This function is called periodically during test mode.
-   */
+
   @Override
   public void testPeriodic() {
-    //max.set(0.6);
   }
 }

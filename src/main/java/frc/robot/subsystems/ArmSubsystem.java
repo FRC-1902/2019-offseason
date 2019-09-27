@@ -19,7 +19,7 @@ public class ArmSubsystem {
     WPI_VictorSPX Arm2;
     WPI_VictorSPX Arm3;
 
-    ArmPosition currentArmPosition;
+    public ArmPosition currentArmPosition;
 
     public PIDController armPID;
 
@@ -36,19 +36,23 @@ public class ArmSubsystem {
 
         pot = new Potentiometer(RobotMap.ARM_POT_1);
 
-        armPID = new PIDController(null, pot, 0, 0, 0, 0, 0);
-
+        // p: 65, i: 0, d: 65
+        // Dominic: 180, 4, 50
+        armPID = new PIDController(null, pot, 110, 4, 50);
+        armPID.setFinishedTolerance(0.002);
     }
 
     public void armPosition(ArmPosition pos) {
-        armPID.setTarget(pos.value);
+        double target = pos.value;
+        if (pos == ArmPosition.NONE) target = pot.getForPID();
+        armPID.setTarget(target);
         currentArmPosition = pos;
-    }//end of armPosition method
+    }
     
-    private static final double GROUND_CONSTANT = 0; //can be tuned later for the correct value
+    private static final double GROUND_CONSTANT = 0.0822;
 
     public enum ArmPosition {
-        GROUND(0), CARGO_SHIP(0), ROCKET_1(0); 
+        NONE(-1), GROUND(0), PANEL(0.00154), ROCKET_1(0.01997), CARGO_SHIP(0.0181), UP(0); 
 
         public double value;
 

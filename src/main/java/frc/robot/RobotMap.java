@@ -33,6 +33,6 @@ public class RobotMap {
     public static final int VACUUM_1 = 12; //nonexistent as of now
 
     //variables for potentiometer
-    public static final int ARM_POT_1 = 1;
+    public static final int ARM_POT_1 = 3;
     public static final int CLIMBER_POT = 2;
 }

@@ -20,10 +20,11 @@ public class PanelCommand extends Command {
     public void onLoop() {
 
         //change these values for real buttons
-        boolean intake = OI.manipController.a.get();
-        boolean outtake = OI.manipController.b.get();
+        boolean intake = OI.panelIntake.get();
+        boolean outtake = OI.panelOuttake.get() || OI.driverSuperOuttake.get();
 
         if (intake){
+            System.out.println("INTAKE INTAKE");
             panelSubsystem.setIntakePower(1);
         }
         else if (outtake){

@@ -23,6 +23,11 @@ public class DriveCommand extends Command {
     x = Math.pow(Utils.deadzone(x, 0.1), 2) * Utils.sign(x);
     y = Math.pow(Utils.deadzone(y, 0.1), 2) * Utils.sign(y);
 
+    if (OI.driverSlow.get()) {
+        x *= 0.75;
+        y *= 0.75;
+    }
+
     DriveSubsystem.arcadeDrive(x, y);
 
     //System.out.println(x + y);

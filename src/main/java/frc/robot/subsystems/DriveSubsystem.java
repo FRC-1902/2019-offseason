@@ -33,6 +33,7 @@ public class DriveSubsystem {
                 max.clearFaults();
                 max.getEncoder();
                 max.setIdleMode(IdleMode.kBrake);
+                //max.setOpenLoopRampRate(0.1);
                 max.burnFlash();
             }
             for (SpeedController c : right.getMotors())
@@ -41,6 +42,7 @@ public class DriveSubsystem {
                 max.clearFaults();
                 max.getEncoder();
                 max.setIdleMode(IdleMode.kBrake);
+                //max.setOpenLoopRampRate(0.1);
                 max.burnFlash();
             }
             right.setInverted(true);

@@ -9,7 +9,9 @@ public class BallCommand extends Command {
 
     BallSubsystem ballSubsystem;
 
-    public BallCommand(Robot robot) {this.ballSubsystem = robot.ballSubsystem; }
+    public BallCommand(Robot robot) {
+        this.ballSubsystem = robot.ballSubsystem; 
+    }
 
     @Override
     public void onInit() {
@@ -18,15 +20,15 @@ public class BallCommand extends Command {
 
     @Override
     public void onLoop() {
-//        boolean intake = OI.manipController. .get();
-//        boolean outtake = OI.manipController. .get();
-//        if(intake){
-//            ballSubsystem.setIntakePower(1);
-//        }
-//        else if(outtake){
-//            ballSubsystem.setIntakePower(-1);
-//        }
-//        else ballSubsystem.setIntakePower(0);
+        boolean intake = OI.ballIntake.get();
+        boolean outtake = OI.ballOuttake.get() || OI.driverSuperOuttake.get();
+        if(intake){
+            ballSubsystem.setIntakePower(1);
+        }
+        else if(outtake){
+            ballSubsystem.setIntakePower(-0.3333);
+        }
+        else ballSubsystem.setIntakePower(0);
     }
 
     @Override
