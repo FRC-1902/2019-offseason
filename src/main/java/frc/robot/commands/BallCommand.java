@@ -26,7 +26,7 @@ public class BallCommand extends Command {
             ballSubsystem.setIntakePower(1);
         }
         else if(outtake){
-            ballSubsystem.setIntakePower(-0.3333);
+            ballSubsystem.setIntakePower(-0.4);
         }
         else ballSubsystem.setIntakePower(0);
     }

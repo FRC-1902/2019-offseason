@@ -2,7 +2,7 @@ package frc.robot.commands;
 
 import com.explodingbacon.bcnlib.framework.Command;
 import com.explodingbacon.bcnlib.utils.Utils;
-
+import com.explodingbacon.bcnlib.framework.PIDController;
 import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.subsystems.ArmSubsystem;
@@ -60,22 +60,34 @@ public class ArmCommand extends Command {
             System.out.println("DISABLE ARM DROP");
         }
         */
+        PIDController current = armSubsystem.armPID;
         pow = armSubsystem.armPID.getMotorPower();
-        //(currentPos == ArmPosition.GROUND) pow = pow * 0.25;
+
+        if (currentPos == ArmPosition.PANEL){
+            if (!armSubsystem.armPIDSlow.isEnabled())
+            {
+                armSubsystem.armPIDSlow.enable();
+                armSubsystem.armPID.disable();
+            }
+            current = armSubsystem.armPIDSlow;
+            pow = armSubsystem.armPIDSlow.getMotorPower();
+        } else {
+            armSubsystem.armPIDSlow.disable();
+        }
 
 
         //Dominic
-        if (armSubsystem.armPID.getCurrentError() < 0) {
+        if (current.getCurrentError() < 0) {
             pow = Utils.minMax(pow, 0.05, 0.1);
         } else {
             pow = Utils.minMax(pow, 0.05, 0.5);
         }
 
-        if (currentPos == ArmPosition.GROUND && Math.abs(armSubsystem.armPID.getCurrentError()) <= .005) {
-            armSubsystem.armPID.disable();
+        if (currentPos == ArmPosition.GROUND && Math.abs(current.getCurrentError()) <= .005) {
+            current.disable();
         }
 
-        if (!armSubsystem.armPID.isEnabled()) pow = 0;
+        if (!current.isEnabled()) pow = 0;
         armSubsystem.arm.set(pow);
     }
 
