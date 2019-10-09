@@ -33,6 +33,7 @@ public class DriveSubsystem {
                 max.clearFaults();
                 max.getEncoder();
                 max.setIdleMode(IdleMode.kBrake);
+                max.setSmartCurrentLimit(15);
                 //max.setOpenLoopRampRate(0.1);
                 max.burnFlash();
             }
@@ -42,6 +43,7 @@ public class DriveSubsystem {
                 max.clearFaults();
                 max.getEncoder();
                 max.setIdleMode(IdleMode.kBrake);
+                max.setSmartCurrentLimit(15);
                 //max.setOpenLoopRampRate(0.1);
                 max.burnFlash();
             }

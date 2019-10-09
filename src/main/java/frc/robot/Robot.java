@@ -59,9 +59,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    armSubsystem.armPID.reTune(SmartDashboard.getNumber("kP", 0),
+    /*
+    armSubsystem.armPIDSlow.reTune(SmartDashboard.getNumber("kP", 0),
     SmartDashboard.getNumber("kI", 0),
     SmartDashboard.getNumber("kD", 0));
+    */
     OI.runCommand(new ArmCommand(this));
     OI.runCommand(new DriveCommand());
     OI.runCommand(new PanelCommand(this));
@@ -71,7 +73,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-      armSubsystem.armPID.logVerbose();
+      armSubsystem.armPIDSlow.logVerbose();
   }
 
   @Override

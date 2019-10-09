@@ -30,17 +30,18 @@ public class ArmCommand extends Command {
         ArmPosition currentPos = armSubsystem.currentArmPosition;
         if (OI.armGround.get()) newPos = ArmSubsystem.ArmPosition.GROUND;
         if (OI.armPanel.get()) newPos = ArmPosition.PANEL;
-        if (OI.armUp.get() || OI.driverHeck.get()) newPos = ArmPosition.UP;
+        // if (OI.armUp.get() || OI.driverHeck.get()) newPos = ArmPosition.UP;
         if (OI.armScore.get()) {
             if (!scoreHeld && (currentPos == ArmPosition.CARGO_SHIP || currentPos == ArmPosition.ROCKET_1)) {
                 if (currentPos == ArmPosition.CARGO_SHIP) newPos = ArmPosition.ROCKET_1;
                 if (currentPos == ArmPosition.ROCKET_1) newPos = ArmPosition.CARGO_SHIP;
-                OI.manipController.rumble(1, 1, 0.5);
-            } else {
+                //OI.manipController.rumble(1, 1, 0.5);
+                System.out.println("ARM TOGGLE");
+            } else if (!scoreHeld) {
                 if (currentPos == ArmPosition.CARGO_SHIP || currentPos == ArmPosition.ROCKET_1) {
                     newPos = currentPos;
                 } else {
-                    newPos = ArmPosition.ROCKET_1;
+                    newPos = ArmPosition.ROCKET_1;//ArmPosition.ROCKET_1;
                 }
             }
             scoreHeld = true;
@@ -78,7 +79,7 @@ public class ArmCommand extends Command {
 
         //Dominic
         if (current.getCurrentError() < 0) {
-            pow = Utils.minMax(pow, 0.05, 0.1);
+            pow = Utils.minMax(pow, 0.05, 0.17);
         } else {
             pow = Utils.minMax(pow, 0.05, 0.5);
         }

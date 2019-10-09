@@ -23,7 +23,7 @@ public class DriveCommand extends Command {
     x = Math.pow(Utils.deadzone(x, 0.1), 2) * Utils.sign(x);
     y = Math.pow(Utils.deadzone(y, 0.1), 2) * Utils.sign(y);
 
-    y *= 0.5;
+    //y *= 0.5;
 
     if (OI.driverSlow.get()) {
         x *= 0.75;
