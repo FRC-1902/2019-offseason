@@ -34,6 +34,11 @@ public class Robot extends TimedRobot {
     ballSubsystem   = new BallSubsystem();
 
     self = this;
+    /*
+    SmartDashboard.putNumber("kP", 0);
+    SmartDashboard.putNumber("kI", 0);
+    SmartDashboard.putNumber("kD", 0);*/
+
   }
 
   @Override
@@ -59,11 +64,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    /*
+    
     armSubsystem.armPIDSlow.reTune(SmartDashboard.getNumber("kP", 0),
     SmartDashboard.getNumber("kI", 0),
     SmartDashboard.getNumber("kD", 0));
-    */
+    
     OI.runCommand(new ArmCommand(this));
     OI.runCommand(new DriveCommand());
     OI.runCommand(new PanelCommand(this));
@@ -74,6 +79,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
       armSubsystem.armPIDSlow.logVerbose();
+      armSubsystem.armPID.logVerbose();
   }
 
   @Override

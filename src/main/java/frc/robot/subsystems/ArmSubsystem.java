@@ -38,10 +38,10 @@ public class ArmSubsystem {
 
         // p: 65, i: 0, d: 65
         // Dominic: 110, 4, 50
-        armPID = new PIDController(null, pot, 65, 0, 65);
+        armPID = new PIDController(null, pot, 200, 0, 65);
         armPID.setFinishedTolerance(0.002);
 
-        armPIDSlow = new PIDController(null, pot, 80, 3.5, 10);
+        armPIDSlow = new PIDController(null, pot, 200, 15, 65);
     }
 
     public void armPosition(ArmPosition pos) {
@@ -52,10 +52,10 @@ public class ArmSubsystem {
         currentArmPosition = pos;
     }
     
-    private static final double GROUND_CONSTANT = 0.0822;
+    private static final double GROUND_CONSTANT = 0.084;
 
     public enum ArmPosition {
-        NONE(-1), GROUND(0), PANEL(0.0018), ROCKET_1(0.01), CARGO_SHIP(0.4881), UP(0); 
+        NONE(-1), GROUND(0), PANEL(0.0007), ROCKET_1(0.004), CARGO_SHIP(0.0065), UP(0); 
 
         public double value;
 
